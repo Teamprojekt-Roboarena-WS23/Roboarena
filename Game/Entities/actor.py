@@ -4,6 +4,7 @@ if TYPE_CHECKING:
 
 from pygame import Vector2, Surface
 import pygame
+from pygame import mixer
 
 from Game.Entities.entity import Entity
 from Game.Entities.bullet import Bullet
@@ -77,6 +78,7 @@ class Actor(Entity):
             bullet = Bullet(self.gameState, bulletTexture, bulletPosition,
                             self.direction, self.bulletSpeed, self.shootRange, self)
             self.gameState.entities.append(bullet)
+            mixer.Sound('Assets/Sounds/laser_gun_standard.wav').play()
             return bullet
         return None
 
